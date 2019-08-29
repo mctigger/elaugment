@@ -9,7 +9,7 @@ This library is currently in it's early stages so interfaces may break and some 
 ``` pip install elaugment ```
 
 ## Examples & Usage
-See `/examples` for an comprehensive overview.
+See `/examples` for an comprehensive overview. Or if github does not render the notebooks click [here](https://nbviewer.jupyter.org/github/Mctigger/elaugment/blob/master/examples/transformations.ipynb). 
 
 ## Contribute
 Transformations are easy to integrate into elaugment, so just create pull-requests when you feel like it!

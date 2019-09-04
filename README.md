@@ -12,7 +12,7 @@ This library is currently in it's early stages so interfaces may break and some 
 
 elaugment essentially only provides two types classes: `Random` and `Transformation`. A objects of type `Random` must implement the `draw(rs)` method that generates a randomized transformation given a numpy random state. Then this transformation is returned a an instance of a `Transformation`-subclass. The numpy random state is necessary to draw random parameters from a fixed random seed. Here is a simple example:
 
-```
+```python
 import numpy as np
 from elaugment.image.random import RandomCrop
 
@@ -38,7 +38,7 @@ See `/examples` for an comprehensive overview. Or if github does not render the 
 
 Here is a list of some transformations that are current implemented:
 
-```
+```python
 transforms = {
     'Identity': Identity(),
     'FlipLr': transformations.FlipLr(),

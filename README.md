@@ -4,8 +4,8 @@ elaugment is a Python package for reproducable data-augmentations. In difference
 This library is currently in it's early stages so interfaces may break and some operations are slow. 
 
 ## Installation
-1. Clone this repository
-2. Run 
+- Clone this repository
+- or run 
 ``` pip install elaugment ```
 
 ## Usage

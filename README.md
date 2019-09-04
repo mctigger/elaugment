@@ -8,7 +8,32 @@ This library is currently in it's early stages so interfaces may break and some 
 2. Run 
 ``` pip install elaugment ```
 
-## Examples & Usage
+## Usage
+
+elaugment essentially only provides two types classes: `Random` and `Transformation`. A objects of type `Random` must implement the `draw(rs)` method that generates a randomized transformation given a numpy random state. Then this transformation is returned a an instance of a `Transformation`-subclass. The numpy random state is necessary to draw random parameters from a fixed random seed. Here is a simple example:
+
+```
+import numpy as np
+from elaugment.image.random import RandomCrop
+
+rs = np.random.RandomState(seed=0)
+
+rt = RandomCrop(224)
+t1 = rt.draw(rs)
+t2 = rt.draw(rs)
+
+# a == b --> True
+a = t1(original_image)
+b = t1(original_image) 
+
+# c == a --> False
+c = t2(original_image)
+
+```
+
+A transformation is always deterministic, which means it can applied multiple times but will always apply the same transformation to the input. Any new call to a random-object, however, will return a different transformation each time.
+
+## Examples
 See `/examples` for an comprehensive overview. Or if github does not render the notebooks click [here](https://nbviewer.jupyter.org/github/Mctigger/elaugment/blob/master/examples/transformations.ipynb). 
 
 Here is a list of some transformations that are current implemented:

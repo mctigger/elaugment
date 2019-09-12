@@ -84,30 +84,30 @@ class PiecewiseAffine(Transformation):
     """
     def __init__(
             self,
-            relaugmenttive_src,
-            relaugmenttive_dst,
+            relative_src,
+            relative_dst,
             **kwargs
     ):
         """
-        :param relaugmenttive_src: Source coordinates.
-        :param relaugmenttive_dst: Destination coordinates.
-        :type relaugmenttive_src: (N, 2) array
-        :type relaugmenttive_dst: (N, 2) array
+        :param relative_src: Source coordinates.
+        :param relative_dst: Destination coordinates.
+        :type relative_src: (N, 2) array
+        :type relative_dst: (N, 2) array
         """
 
         tf = skimage.transform.PiecewiseAffineTransform()
 
         self.tf = tf
-        self.relaugmenttive_src = relaugmenttive_src
-        self.relaugmenttive_dst = relaugmenttive_dst
+        self.relative_src = relative_src
+        self.relative_dst = relative_dst
         self.kwargs = kwargs
 
     def transform(self, x):
-        src = self.relaugmenttive_src.copy()
+        src = self.relative_src.copy()
         src[:, 0] = src[:, 0] * x.shape[0]
         src[:, 1] = src[:, 1] * x.shape[1]
 
-        dst = self.relaugmenttive_dst.copy()
+        dst = self.relative_dst.copy()
         dst[:, 0] = dst[:, 0] * x.shape[0]
         dst[:, 1] = dst[:, 1] * x.shape[1]
 
@@ -121,16 +121,16 @@ class PiecewiseAffine(Transformation):
 
 class CropByFloat(Transformation):
     """
-    Creates a crop of a given size relaugmenttiv to the top and left edge.
+    Creates a crop of a given size relativ to the top and left edge.
     """
     def __init__(self, width, height, top, left):
         """
-        The image size should be in pixels while the edge distance should be the relaugmenttiv distance.
+        The image size should be in pixels while the edge distance should be the relativ distance.
 
         :param width: Width of the crop in pixels.
         :param height: Height of the crop in pixels.
-        :param top: Distance to the upper edge relaugmenttive to the image height. Must be between 0 and 1.
-        :param left: Distance to the left edge relaugmenttive to the image width. Must be between 0 and 1.
+        :param top: Distance to the upper edge relative to the image height. Must be between 0 and 1.
+        :param left: Distance to the left edge relative to the image width. Must be between 0 and 1.
         :type width: int
         :type height: int
         :type top: float
@@ -172,9 +172,9 @@ class CropAbsolute(Transformation):
         return x[self.top:(self.top+self.height), self.left:(self.left+self.width)]
 
 
-class CropRelaugmenttive(Transformation):
+class CropRelative(Transformation):
     """
-    Crops an image patch relaugmenttive to its size.
+    Crops an image patch relative to its size.
     This transformation is especially interesting for random crops since the image size is not known at "draw"-time.
     """
     def __init__(self, width, height, top, left):

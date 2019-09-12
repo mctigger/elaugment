@@ -114,7 +114,7 @@ class RandomResizedCrop(Random):
                 j = rs.uniform(0, 1 - w)
 
                 transform = Pipeline([
-                    transformations.CropRelaugmenttive(w, h, i, j),
+                    transformations.CropRelative(w, h, i, j),
                     transformations.Resize((self.crop_size, self.crop_size), mode=self.mode)
                 ])
 
@@ -180,7 +180,7 @@ class RandomColorPerturbation(Random):
 
 class RandomDistortion(Random):
     """
-    Random elaugmentstic distortions.
+    Random elastic distortions.
     This implementation is pretty slow as scitkit-image PiecewiseAffine is Used.
     """
     def __init__(
@@ -194,8 +194,8 @@ class RandomDistortion(Random):
         """
         :param tiles_x: Number of points in x-direction.
         :param tiles_y: Number of points in y-direction.
-        :param magnitude_x: Maximum magnitude relaugmenttive to the x-tile-size.
-        :param magnitude_y: Maximum magnitude relaugmenttive to the y-tile-size.
+        :param magnitude_x: Maximum magnitude relative to the x-tile-size.
+        :param magnitude_y: Maximum magnitude relative to the y-tile-size.
         :type tiles_x: int
         :type tiles_y: int
         :type magnitude_x: float

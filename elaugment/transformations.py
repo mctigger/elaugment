@@ -53,8 +53,8 @@ class Pipeline(Transformation):
             assert isinstance(t, Transformation)
 
     def transform(self, x):
-        for transform in self.transforms:
-            x = transform(x)
+        for t in self.transforms:
+            x = t(x)
 
         return x
 

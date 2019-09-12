@@ -10,7 +10,7 @@ This library is currently in it's early stages so interfaces may break and some 
 
 ## Usage
 
-elaugment essentially only provides two types classes: `Random` and `Transformation`. A objects of type `Random` must implement the `draw(rs)` method that generates a randomized transformation given a numpy random state. Then this transformation is returned a an instance of a `Transformation`-subclass. The numpy random state is necessary to draw random parameters from a fixed random seed. Here is a simple example:
+elaugment essentially only provides two types classes: `Random` and `Transformation`. A objects of type `Random` must implement the `draw(rs)` method that generates a randomized transformation given a numpy random state. Then this transformation is returned as an instance of a `Transformation`-subclass. The numpy random state is necessary to draw random parameters from a fixed random seed. Here is a simple example:
 
 ```python
 import numpy as np
@@ -18,9 +18,9 @@ from elaugment.image.random import RandomCrop
 
 rs = np.random.RandomState(seed=0)
 
-rt = RandomCrop(224)
-t1 = rt.draw(rs)
-t2 = rt.draw(rs)
+rt = RandomCrop(224) # rt is of type Random
+t1 = rt.draw(rs) # t1 is of type Transformation
+t2 = rt.draw(rs) # t2 is of type Transformation
 
 # a == b --> True
 a = t1(original_image)
